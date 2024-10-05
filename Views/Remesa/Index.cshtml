@@ -1,0 +1,111 @@
+@model List<PARCIAL.Models.Remesas>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Color de fondo suave */
+    }
+
+    .container {
+        margin-top: 50px; /* Espaciado superior para centrar el contenido */
+        padding: 30px; /* Espaciado interno */
+        background-color: #ffffff; /* Fondo blanco para la tabla */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    }
+
+    h2 {
+        color: #217388; /* Color del título */
+        text-align: center; /* Centrar el título */
+        margin-bottom: 30px; /* Espaciado inferior */
+    }
+
+    .table {
+        margin-top: 20px; /* Espaciado superior de la tabla */
+    }
+
+    .table th {
+        text-align: center; /* Centrar texto en encabezados */
+        background-color: #217388; /* Color de fondo de los encabezados */
+        color: white; /* Color del texto de los encabezados */
+    }
+
+    .table td {
+        vertical-align: middle; /* Centrar verticalmente el contenido de las celdas */
+    }
+
+    .btn-custom {
+        background-color: #217388; /* Color celeste */
+        color: white; /* Texto en blanco */
+        border: none; /* Sin borde */
+        padding: 10px 20px; /* Espaciado interno */
+        border-radius: 5px; /* Bordes redondeados */
+        transition: background-color 0.3s; /* Transición suave */
+    }
+
+    .btn-custom:hover {
+        background-color: #005f70; /* Color más oscuro al pasar el ratón */
+        color: white; /* Mantener texto en blanco */
+    }
+
+    .no-records {
+        text-align: center; /* Centrar el texto */
+        color: #888; /* Color gris para el mensaje */
+        font-style: italic; /* Estilo en cursiva */
+    }
+
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+        color: #555; /* Color del texto del pie de página */
+    }
+</style>
+
+<div class="container">
+    <h2>Lista de Remesas</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Remitente</th>
+                <th>Destinatario</th>
+                <th>País Origen</th>
+                <th>País Destino</th>
+                <th>Monto Enviado</th>
+                <th>Tasa de Cambio</th>
+                <th>Monto Final</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var remesas in Model)
+                {
+                    <tr>
+                        <td>@remesas.nombreRemesa</td>
+                        <td>@remesas.nombreDestinatario</td>
+                        <td>@remesas.paisOrigen</td>
+                        <td>@remesas.paisDestino</td>
+                        <td>@remesas.montoEnvio.ToString("C")</td> <!-- Formato de moneda -->
+                        <td>@remesas.tasaCambio</td>
+                        <td>@remesas.montoFinal.ToString("C")</td> <!-- Formato de moneda -->
+                        <td>@remesas.Estado</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="no-records">No hay registros de transacciones disponibles.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a asp-action="Create" class="btn btn-custom btn-lg">Registrar Nueva Transacción</a>
+    </div>
+
+</div>

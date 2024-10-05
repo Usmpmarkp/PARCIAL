@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PARCIAL.Models;
 
-namespace PARCIAL.Data;
-
-public class ApplicationDbContext : IdentityDbContext
+namespace PARCIAL.Data
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
+    public class ApplicationDbContext : IdentityDbContext // Usa IdentityDbContext si estás manejando usuarios y roles
+    // Si no necesitas Identity, usa DbContext en lugar de IdentityDbContext
     {
-    }
-     public DbSet<PARCIAL.Models.Remesas> DataRemesas { get;set;}
-     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Remesas> Remesas { get; set; }
+
         // Otras configuraciones
     }
 }
