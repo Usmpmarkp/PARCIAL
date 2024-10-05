@@ -9,4 +9,10 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+     public DbSet<PARCIAL.Models.Remesas> DataRemesas { get;set;}
+     protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        // Otras configuraciones
+    }
 }
