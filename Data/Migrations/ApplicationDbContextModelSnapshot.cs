@@ -243,6 +243,7 @@ namespace PARCIAL.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("nombreRemesa")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("paisDestino")
@@ -259,7 +260,7 @@ namespace PARCIAL.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DataRemesas");
+                    b.ToTable("Remesas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -1,0 +1,104 @@
+@model PARCIAL.Models.Remesas
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #f0f4f8; /* Color de fondo gris claro */
+    }
+
+    .container {
+        margin-top: 50px;
+        background-color: #ffffff; /* Fondo blanco para el formulario */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+        padding: 30px; /* Espaciado interno */
+    }
+
+    h2 {
+        color: #0086A8; /* Color del título celeste oscuro */
+        text-align: center; /* Centrar el título */
+        margin-bottom: 30px; /* Espaciado inferior */
+    }
+
+    .form-group label {
+        color: #217388; /* Color de las etiquetas */
+        font-weight: bold; /* Negrita para las etiquetas */
+    }
+
+    .btn-custom {
+        background-color: #68B2D8; /* Color de fondo celeste medio */
+        color: white; /* Texto blanco */
+        border: none; /* Sin borde */
+        padding: 12px 25px; /* Espaciado interno */
+        font-size: 1.2rem; /* Tamaño de fuente */
+        border-radius: 5px; /* Bordes redondeados */
+        transition: background-color 0.3s; /* Transición suave */
+        width: 100%; /* Botón ocupa todo el ancho */
+    }
+
+    .btn-custom:hover {
+        background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+    }
+
+    .form-control {
+        border-radius: 5px; /* Bordes redondeados */
+        border: 1px solid #d1d1d1; /* Borde gris */
+        transition: border-color 0.3s; /* Transición de borde */
+    }
+
+    .form-control:focus {
+        border-color: #68B2D8; /* Borde celeste al enfocar */
+        box-shadow: 0 0 5px rgba(104, 178, 216, 0.5); /* Sombra celeste al enfocar */
+    }
+
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+        color: #555; /* Color del texto del pie de página */
+    }
+</style>
+
+<div class="container">
+    <h2>Registrar Remesas</h2>
+
+    <form asp-controller="Remesa" asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="nombreRemesa">Nombre del Remitente</label>
+            <input asp-for="nombreRemesa" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="nombreDestinatario">Nombre del Destinatario</label>
+            <input asp-for="nombreDestinatario" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="paisOrigen">País de Origen</label>
+            <input asp-for="paisOrigen" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="paisDestino">País Destinatario</label>
+            <input asp-for="paisDestino" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="montoEnvio">Monto Enviado</label>
+            <input asp-for="montoEnvio" class="form-control" type="number" step="0.01" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="tipCambio">Tipo de Transacción</label>
+            <select asp-for="tipCambio" class="form-control" required>
+                <option value="">Seleccionar</option>
+                <option value="BTC">Bitcoin (BTC)</option>
+                <option value="USD">Dólares Estadounidenses (USD)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="tasaCambio">Tasa de Cambio</label>
+            <input asp-for="tasaCambio" class="form-control" type="number" step="0.01" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="Estado">Estado</label>
+            <input asp-for="Estado" class="form-control" required />
+        </div>
+        <br>
+        <button type="submit" class="btn-custom">Registrar</button>
+    </form>
+</div>

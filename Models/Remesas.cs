@@ -12,6 +12,8 @@ namespace PARCIAL.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public long Id { get; set; }
+
+        [Required]
         public string? nombreRemesa { get; set; }
 
         public string? nombreDestinatario { get; set; }
